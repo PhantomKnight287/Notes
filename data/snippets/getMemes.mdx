@@ -1,0 +1,22 @@
+---
+title: "Get Memes"
+description: "Using Reddit Api to get Latest Memes from some famous Subreddits"
+type: "Snippet"
+ogImage: "/data/snippets/hook.jpg"
+id: 2
+---
+
+Get Memes from some famous Subreddits
+
+```py
+import requests
+
+req = requests.get('https://www.reddit.com/r/memes/top/.json?limit=10')
+req = req.json()
+
+for i in req['data']['children']:
+    print(i['data']['title'])
+    print(i['data']['url_overridden_by_dest'])
+
+```
+This will print the title as well the the image url of the meme.

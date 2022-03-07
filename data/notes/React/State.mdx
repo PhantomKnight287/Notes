@@ -1,0 +1,165 @@
+---
+type: Notes
+topic: react
+title: State - React
+desc: What is State?  How it is Used?  Difference between State and Props.
+ogImage: /data/notes/react/react.png
+id: 9
+---
+
+# Some Important Points about State and Props.
+
+Props:
+
+1. Props are Passed to the Component by its Parent Component.
+2. Props are immutable.
+3. Accessing The Props
+   - `props` &rarr; Functional Components
+   - `this.props` &rarr; Class Components
+
+State:
+
+1. State is Managed within the Component.
+2. State is mutable.
+3. Access The State
+   - `useState` hook &rarr; Functional Components.
+   - `this.state` &rarr; Class Components.
+4. Updating The State
+   - Functional Component &rarr; a function returned by `useState` hook.
+   - Class Components &rarr; `this.setState` function
+
+Both of these are information which influences the UI in the browser.
+
+# Creating a State in Class Component
+
+```jsx
+// Counter.js
+import { Component } from "react";
+
+class Counter extends Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0,
+    };
+  }
+
+  render() {
+    return <div>Count: {this.state.count}</div>;
+  }
+}
+```
+
+Output in the Dom:
+
+<img src="/data/notes/react/countZero.png" alt="Counter Zero" />
+
+Understanding The Component:
+
+1. We're creating a Class `Counter` which extends the `Component` class of React.
+2. In `render` function we're returing the JSX with `count : <counter>`.
+3. In class's constructor we're calling the `super` function becauser we're extending the base `Component` class of React.
+4. We're creating the state as an object this count set to 0. `state` is a reserved keyword in React's Component.
+
+# Mutating the State in Class Component.
+
+We can mutate the state in a Class Component using `this.setState` function. This function is provided to use by the `Component` class we extended. This function takes an object as an argument and set the object as state.
+
+##### Updating the count in the Counter Component
+
+```jsx
+// Counter.js
+import { Component } from "react";
+
+class Counter extends Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0,
+    };
+  }
+  increaseCount() {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  }
+  render() {
+    return (
+      <div>
+        <h1>Count : {this.state.count}</h1>
+        <button onClick={() => this.increaseCount()}>Increase</button>
+      </div>
+    );
+  }
+}
+```
+
+Clicking on the Button will increase the count.
+
+Before Button Click:
+
+<img src="/data/notes/react/countZero.png" alt="Counter Zero" />
+
+After Button Click:
+
+<img src="/data/notes/react/count1Button.png" alt="Counter Zero" />
+
+# Creating a State in Functional Component
+
+```js
+// Counter.js
+import { useState } from "react";
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+    </div>
+  );
+};
+```
+
+Output in the Dom:
+
+<img src="/data/notes/react/countZero.png" alt="Counter Zero" />
+
+# Understanding the Component
+
+1. We're Creating a `Counter` function.
+2. We're using `useState` hook to create the count.
+   - `useState` takes one parameter which is the default value of the `count` variable.
+   - `useState` returns two things:
+     1. Variable with the default value provided to `useState` parameter.
+     2. A function to update the value of the variable.
+
+# Mutating the State in Functional Component.
+
+We can mutate the value of the state using the function returned by `useState` hook.
+
+##### Updating The Count in Counter Component
+
+```js
+import { useState } from "react";
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  const increaseCount = () => {
+    setCount(count + 1);
+  };
+  return (
+    <div>
+      <h1>Count : {count}</h1>
+      <button onClick={() => increaseCount()}>Increase</button>
+    </div>
+  );
+};
+```
+
+Clicking on the Button will increase the count.
+
+Before Button Click:
+
+<img src="/data/notes/react/countZero.png" alt="Counter Zero" />
+
+After Button Click:
+
+<img src="/data/notes/react/count1Button.png" alt="Counter Zero" />

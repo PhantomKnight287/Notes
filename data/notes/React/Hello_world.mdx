@@ -1,0 +1,99 @@
+---
+type: Notes
+topic: react
+title: Hello World - React
+desc: Hello World Application In React
+ogImage: /data/notes/react/react.png
+id: 3
+---
+
+To Create A Hello World Application in React Open `App.js` in `src` folder
+
+The content of the file is as follows:
+
+```js
+import logo from "./logo.svg";
+import "./App.css";
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+# Understanding This React Element line by line
+
+1. Importing the logo from the `src` folder.
+2. Importing `App.css`.
+3. Creating A function called `App` which is returing a div element.
+
+The language used to make React Components is called `JSX` and the full form is `JavaScript Extension`.
+
+We can return HTML elements from a React Components
+
+The component returns the default page of React Application which is being rendered in the dom.
+
+We need to export these component.
+
+# Types of Exports
+
+1. Named Exports
+2. Default Exports
+
+<br/>
+1. Named Exports
+
+- Named exports are used to export a single value from a module and they can only be imported by the same name.
+
+```js
+// module.js
+export const name = "John";
+const surname = "Doe";
+export { surname };
+
+// App.js
+import {surname,name as Name} from "./module.js"
+```
+
+2. Default Exports
+- Default Exports can be used to export any function,variable,class,object,etc. We can have only one default export in a file and default exports can be imported by any name.
+```js
+// module.js
+export const name = "John";
+const surname = "Doe";
+export default surname;
+
+// App.js
+import surname,{name} from "./module.js"
+```
+
+Remove the default returned value from App function and replace it by
+
+```js
+// snip
+
+return(
+    <h1>Hello World</h1>
+)
+```
+
+# Output
+<img src="/data/notes/react/helloworld.png" alt="Hello World" />

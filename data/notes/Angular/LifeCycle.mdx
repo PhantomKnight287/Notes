@@ -1,0 +1,54 @@
+---
+title: Component's LifeCycle In Angular
+type: Notes
+desc: What is Component LifeCycle and How to run code on different LifeCycle Events.
+ogImage: /data/notes/angular/angular.png
+topic: angular
+id: 3
+---
+
+Life Cycle hooks are special functionality in Angular that allows us to hook into lifecycle events of a `Component` or `Directive`.
+
+Some LifeCycle Events are:
+
+1. `ngOnChanges`
+2. `ngOnInit`
+3. `ngDoCheck`
+   1. `ngAfterContentInit`
+   2. `ngAfterContentChecked`
+   3. `ngAfterViewInit`
+   4. `ngAfterViewChecked`
+4. `ngOnDestroy`
+
+Using Component LifeCycle
+
+```ts
+import { Component, OnInit, OnDestroy } from "@angular/core";
+
+@Component({
+  selector: "app-root",
+
+  templateUrl: "./app.component.html",
+
+  styleUrls: ["./app.component.css"],
+})
+export class AppComponent implements OnInit, OnDestroy {
+  title = "Hello World";
+
+  interval: any;
+
+  ngOnInit(): void {
+    this.interval = setInterval(() => {
+      console.log("Hello World");
+    }, 1000);
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
+  }
+}
+```
+
+This Component will start the console log `Hello World` after each second once a component is Renderer/Mounted.
+
+If the Component gets Unmounted the SetInterval will continue to work. To clear this subscription we used `ngOnDestory` to clear the interval.

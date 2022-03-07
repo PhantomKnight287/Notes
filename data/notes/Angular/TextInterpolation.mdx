@@ -1,0 +1,64 @@
+---
+title: TextInterpolation In Angular
+type: Notes
+desc: What is TextInterpolation and How To use it in Angular?
+ogImage: /data/notes/angular/angular.png
+topic: angular
+id: 4
+---
+
+Text Interpolation is a one way data binding Technique which is used to transfer data from a Typescript code to an Html Element. It uses `Template Expression ({{}})` also known as Moustache Syntax.
+
+### Use of Text Interpolation
+
+We uses Text Interpolation when we want to show a dynamic data in our component
+
+To use Text Interpolation we uses `{{}}` .
+
+Angular will resolve the code present inside these braces.
+
+### Things We cannot do in TextInterpolation
+
+1. Use of Operators involving Some Sort of Assignment like: `=` `+=` `-=`
+2. JavaScript KeyWords like `new` `typeof` `instanceof`
+3. Chaining Expressions
+4. Increment and Decrement Operators like: `++` `--`
+5. Some ES2015+ operators.
+
+Text Interpolations can also Invoke Functions:
+
+Example:
+
+```ts
+import { Component } from "@angular/core";
+
+@Component({
+  selector: "app-root",
+
+  templateUrl: "./app.component.html",
+
+  styleUrls: ["./app.component.css"],
+})
+export class AppComponent {
+  getMin(a: number, c: number) {
+    if (a > b) return b;
+    return a;
+  }
+}
+```
+
+Inside The Template:
+
+```
+	{{getMin(2,3)}}
+```
+
+Output:
+
+![image](/data/notes/angular/TextInterpolationGetMin.png)
+
+# Things to Remember when using TextInterpolations
+
+1. We should keep the Application logic in `.ts` file as much as possible.
+2. Expressions should finish quickly for better and faster user experience.
+3. Template Expressions should not change the Application's State.

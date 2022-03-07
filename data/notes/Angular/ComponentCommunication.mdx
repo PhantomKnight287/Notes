@@ -1,0 +1,120 @@
+---
+title: Component Communication In Angular
+type: Notes
+desc: How to pass data between different Angular Component
+ogImage: /data/notes/angular/angular.png
+topic: angular
+id: 5
+---
+
+An Angular application consist of many components and to make them work together  We've to communicate with each component.
+
+Their are 4 ways to Communicate between Components:
+
+1. Binding Using `@Input` and `@Output` decorator.
+2. Reference using `@ViewChild` and `@ContentChild`
+3. Provider ( Services )
+4. Template Outlet.
+
+
+### Binding 
+`@Input` decorator takes data from Parent Component and pass it down to the child component.
+
+To Demonstrate Binding we will create Two Components named `parent` and `child`
+
+```bash
+ng g c parent
+```
+
+```bash
+ng g c child
+```
+
+In our Child Component, we will import `Input` from `@angular/core` and write the following code:
+
+```ts
+import {Component,OnInit,Input} from '@angular/core'
+// snip
+export class ChildComponent implements OnInit {
+	@Input() 
+	message!:string
+
+	//snip
+
+}
+
+```
+
+In Component's Html we will render this value:
+```html
+{{message}}
+```
+
+In Parent Component We will render the Child Component using :
+```html
+<app-child></app-child>
+```
+
+To Pass the `message` from parent to child component we've to use:
+
+```html
+<app-child [message]="'Hello World From Parent Component'"  ></app-child>
+```
+
+To Render the Parent Component we will use `app-parent` selector in our `app.component.html`
+
+```html
+<!-- app.component.html -->
+<app-parent></app-parent>
+```
+
+Output in the Dom:
+
+![[/data/notes/angular/InputDecoratorOutput.png]]
+
+
+`@Output` decorator marks a property in a child component as a doorway through which data can travel from Child to Parent Component. 
+
+In Child Component Import `Output` and `EventEmitter` decorator.
+
+Create a new Variable with the following Code:
+
+```ts
+// snip
+@Output() messageEvent = new EventEmitter<string>();
+
+	sendMessage(){
+		this.messageEvent.emit("Hello From Child Component.")
+	}
+```
+
+Child's Template:
+
+```html
+<button (click)="sendMessage()" > Click Here </button>
+```
+
+In Parent Component's file create a function to recieve the message:
+
+```ts
+// snip
+
+	recieveMessage(msg:string){
+		console.log(msg)
+	}
+
+```
+
+Parent's Template:
+
+```html
+<app-child (messageEvent)="recieveMessage($event)"></app-child>
+```
+
+Output in the Dom:
+
+![image](/data/notes/angular/ClickHereBtn.png)
+
+Console:
+![image](/data/notes/angular/HelloFromChildConsoleLog.png)
+

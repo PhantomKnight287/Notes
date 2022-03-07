@@ -1,0 +1,136 @@
+---
+type: Notes
+topic: react
+title: Props - React
+desc: What are Props and How is it helpful?
+ogImage: /data/notes/react/react.png
+id: 8
+---
+
+React's elements are Reusable and sometimes we need to change some specific parts of the UI as we wanted depending on some external data.
+
+This is where Props is used. Props are the shortform for properties.
+
+Props are immutable and you cannot change its value.
+
+# Props in Functional Components
+
+1. Component with a Hardcoded Name.
+
+```js
+// Component.js
+
+export default function Component() {
+  return <h1>Welcome Gurpal</h1>;
+}
+
+// App.js
+
+import Component from "./Component";
+
+function App() {
+  return <Component />;
+}
+```
+
+Output:
+
+<img src="/data/notes/react/helloGurpal.png" alt="Hello Gurpal" />
+
+2. Component with a dynamic name.
+
+```js
+// Component.js
+export default function Component(props) {
+  return <h1>Welcome {props.name}</h1>;
+}
+// App.js
+
+function App() {
+  return <Component name="Visitor" />;
+}
+```
+
+Output:
+
+<img src="/data/notes/react/helloVisitor.png" alt="Hello Visitor" />
+
+Same Example with Object destructuring.
+
+```js
+// Component.js
+export default function Component({ name }) {
+  return <h1>Welcome {name}</h1>;
+}
+// App.js
+
+function App() {
+  return <Component name="Visitor" />;
+}
+```
+
+Output:
+
+<img src="/data/notes/react/helloVisitor.png" alt="Hello Visitor" />
+
+# Props in Class Components
+
+1. Class Component with Hardcoded name.
+
+```js
+// Component.js
+import React, { Component } from "react";
+
+class CustomComponent extends Component {
+  render() {
+    return (
+      <>
+        <h1>Hello Gurpal </h1>
+      </>
+    );
+  }
+}
+
+export default CustomComponent;
+// App.js
+
+import CustomComponent from "./Component";
+
+function App() {
+  return <CustomComponent />;
+}
+```
+
+Output:
+
+<img src="/data/notes/react/helloGurpal.png" alt="Hello Gurpal" />
+
+2. Class Component with dynamic name.
+
+```js
+// Component.js
+import React, { Component } from "react";
+
+class CustomComponent extends Component {
+  render() {
+    return (
+      <>
+        <h1>Hello {this.props.name} </h1>
+      </>
+    );
+  }
+}
+
+export default CustomComponent;
+// App.js
+
+import CustomComponent from "./Component";
+
+function App() {
+  return <CustomComponent name="Visitor" />;
+}
+```
+
+Output:
+
+<img src="/data/notes/react/helloGurpal.png" alt="Hello Gurpal" />

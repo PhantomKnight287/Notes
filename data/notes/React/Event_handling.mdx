@@ -1,0 +1,61 @@
+---
+type: Notes
+topic: react
+title: Event Handling - React
+desc: How To Handle Events like `click`, `mouseOver` etc in React?
+ogImage: /data/notes/react/react.png
+id: 10
+---
+
+Events in React follows Camel Case which means `onclick` in Html is `onClick` in React.
+
+# Handling Events In Functional Components
+
+```js
+export default function Component() {
+  return (
+    <>
+      <button>Click Here</button>
+    </>
+  );
+}
+```
+
+This is a basic functional component displaying a button in the dom.
+
+We want to listen to the click event on the button and show an alert with Text `Hello World`
+
+```js
+export default function Component() {
+  const handleClick = () => {
+    alert("Hello World");
+  };
+  return (
+    <>
+      <button onClick={handleClick}>Click Here</button>
+    </>
+  );
+}
+```
+
+&rarr; We should not pass the function as a function call (ex: `handleClick()` instead of `handleClick`) as it will call the function when the component is rendered and nothing will happen when the button is clicked afterwards. We can add Arrow Functions as event handlers.
+
+# Handling Events in Class Component
+
+```js
+import { Component } from "react";
+
+export default class ClassComponent extends Component {
+  handleClick() {
+    alert("Hello World");
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleClick}>Click Here</button>
+      </div>
+    );
+  }
+}
+```

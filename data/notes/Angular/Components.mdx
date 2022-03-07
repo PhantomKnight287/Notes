@@ -1,0 +1,88 @@
+---
+title: Components In Angular
+type: Notes
+desc: Introduction to Components in Angular
+ogImage: /data/notes/angular/angular.png
+topic: angular
+id: 2
+---
+
+Components are **the most basic UI building block of an Angular app**. An Angular app contains a tree of Angular components. Angular components are a subset of directives, always associated with a template. Unlike other directives, only one component can be instantiated for a given element in a template.
+
+# Creating a Component
+
+We can create a new angular component by two ways.
+
+1. Using Angular cli
+2. Creating on your own.
+
+#### Creating A component using Angular cli
+
+```bash
+ng generate component <name>
+```
+
+Or
+
+```bash
+ng g c <name>
+```
+
+Angular Cli will take care of rest of the things like including your component in `app.module.ts`
+
+#### Creating A Component Manually.
+
+1. Create a new file in `app` directory ending with `.component.ts`
+2. Add the following code to your component file.
+
+```ts
+import { Component } from "@angular/core";
+
+@Component({
+  selector: "app-test-component",
+  templateUrl: "./app-test.component.html",
+  styleUrl: "./app-test.component.css",
+})
+export class TestComponent {}
+```
+
+Understanding The Component:
+
+1. We're importing `Component` from `@angular/core`
+2. Adding a `Component` decorator. Decorator marks a class as an Angular component and define meta data about the component.
+
+`selector` in the class decorator is a special tag. It will be used to apply css to the element and render this component.
+
+`templateUrl` is a property which points to a `html` file for the component.
+`styleUrl` is a property which points to a `css` file for the component.
+
+We can also use `template` and `styles` to define our component iand styles in the same file without creating css and html files.
+
+All the properties defined in the class of the Component is available in the Component and we can access them using `{{}}`.
+
+Import the Class(TestComponent) in `app.module.ts` and provide it in `declarations` in `@NgModule` decorator.
+
+To Render the Component use
+
+```html
+<app-test-component></app-test-component>
+```
+
+**Example:**
+
+```ts
+import { Component } from "@angular/core";
+
+@Component({
+  selector: "app-test-component",
+  templateUrl: "./app-test.component.html",
+  styleUrl: "./app-test.component.css",
+})
+export class TestComponent {
+  title = "Hello World";
+}
+```
+
+We can access this title property in component's template using `{{title}}`
+
+![image](/data/notes/angular/helloWorldTitle.png)

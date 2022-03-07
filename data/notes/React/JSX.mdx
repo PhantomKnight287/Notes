@@ -1,0 +1,45 @@
+---
+type: Notes
+topic: react
+title: JSX - React
+desc: What is JSX and Why is it used?
+ogImage: /data/notes/react/react.png
+id: 6
+---
+
+JSX &rarr; JavaScript XML - It is an extension of JavaScript that allows you to write HTML-like markup in JavaScript.
+
+JSX elements have a tag name,attributes,and children.
+
+A React Component without JSX
+
+```js
+import React from "react";
+const Component = () => {
+  return React.createElement("div", null, "Hello World");
+};
+```
+
+Output:
+
+<img src="/data/notes/react/helloWorld.png" alt="hello world" />
+
+A React Component with JSX
+
+```js
+const Component = () => {
+  return <h1>Hello World</h1>;
+};
+```
+
+Output:
+
+<img src="/data/notes/react/helloWorld.png" alt="hello world" />
+
+Difference between JSX and HTML
+
+1. `class` attribute will be replaced by `className` because `class` is a reserved keyword in JavaScript.
+2. `for` in `label` will be replaced by `htmlFor` because `for` is a reserved keyword in JavaScript.
+3. Camel Case Property naming Convention 
+ - `onclick` will be changed to `onClick`
+

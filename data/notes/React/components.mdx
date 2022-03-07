@@ -1,0 +1,51 @@
+---
+type: Notes
+topic: react
+title: Types of Components - React
+desc: Types of Components in React
+ogImage: /data/notes/react/react.png
+id: 4
+---
+
+We've 2 types of components in React:
+
+1. Functional Components
+2. Class Components
+
+<br />
+
+- Functional Components:
+  They're JavaScript function which returns the JSX which is rendered inside the DOM.
+
+- Class Components:
+  They're JavaScript classes which are used to create the components. Every Class component extends `Component` class from react and has a `render` function which returns the JSX which is rendered inside the DOM.
+
+Examples:
+
+```js
+export default function App() {
+  return <h1>Hello World</h1>;
+}
+```
+
+```js
+import { Component } from "react";
+
+class App extends Component {
+  render() {
+    return <h1>Hello World</h1>;
+  }
+}
+```
+
+Both of these Components do the same work.
+
+# Why Two Types of Components?
+
+React earlier used to have only class components but the developers wanted to switch over from classes to functions so they made Functional Components.
+
+Functional Components were not able to hold any state or in easy words they never had any data to which they can react on changes but after the introduction of hooks this was changed.
+
+We will discuss hooks after discussing class components.
+
+Every Component should return only one root element. We Need to Wrap other elements inside the root element.

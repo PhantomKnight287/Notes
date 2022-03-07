@@ -1,0 +1,51 @@
+---
+type: Notes
+topic: react
+title: Understanding Default React Application
+desc: Understanding Default React Application
+ogImage: /data/notes/react/react.png
+id: 2
+---
+
+We Created A React Application using CRA. Open `index.js` file present in `src` folder
+
+The default code will be like this:
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
+
+# Understanding Each Line
+
+1. Importing React from `react` package. This is no longer needed since React v17.
+2. Importing ReactDOM from `react-dom` package. This package helps us to render our application.
+3. Importing `./index.css` file. This file contains all the styles for our application.
+4. Importing `./App.js` file. This file contains the code for our application.
+5. Importing `./reportWebVitals` function. This function helps us to measure performance of our application.
+
+The Main Logic of Rendering is inside `ReactDOM.render` function.
+
+This function takes two arguments.
+
+1. The JSX element to render and 2. The DOM element to render it in.
+
+The JSX element must have one single parent tag.
+The `<App />` is the JSX element. The JSX elements can be render just like Normal HTMl Elements.
+
+We're getting a dom element using `document.getElementById` function. The `root` is the id of the element.

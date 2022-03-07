@@ -1,0 +1,38 @@
+---
+type: Notes
+topic: react
+title: Evaluating JavaScript - React
+desc: How to evaluate JavaScript in React
+ogImage: /data/notes/react/react.png
+id: 7
+---
+
+We can't evaluate JavaScript expressions in React's Component's return value. React will parse it as a normal string.
+
+Example:
+
+```js
+// App.js
+
+function App() {
+  return <div>2+2</div>;
+}
+```
+
+Output:
+
+<img src="/data/notes/react/twoSum.png" alt="twoSum" />
+
+To Evaluate JavaScript Expressions in React, We've to use `{ }` braces.
+
+Example:
+
+```js
+// App.js
+
+function App() {
+  return <div>{2+2}</div>;
+}
+```
+
+<img src="/data/notes/react/four.png" alt="four" />

@@ -1,0 +1,34 @@
+---
+title: "useSocket React Hook"
+description: "React Hook to Connect to Socket.io Backend"
+type: "Snippet"
+ogImage: "/data/snippets/hook.jpg"
+id: 1
+---
+
+This is a [React](https://reactjs.org) hook which can be used to connect to a `Socket.io` backend
+
+```ts
+import { useEffect } from "react"; // useEffect to perform side effects
+import { io } from "socket.io-client"; // importing io to connect to the backend
+export function useSocket(url: string) {
+  const socket = io(url);
+  useEffect(() => {
+    return () => {
+      socket.disconnect(); // disconnecting from the backend once a component is unmounted
+    };
+  }, []);
+  return socket; // returning the socket instance
+}
+```
+
+# Usage
+
+```tsx
+import { useSocket } from "./useSocket";
+export default function Component() {
+  const socket = useSocket("http://localhost:3000");
+
+  return <>{/* Return your component here */}</>;
+}
+```

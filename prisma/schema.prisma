@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Comments {
+  id        Int      @id @default(autoincrement())
+  comment   String
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  topic     String
+  noteId    Int
+}
+
+model GuestBook {
+  id        Int      @id @default(autoincrement())
+  name      String
+  comment   String
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+}

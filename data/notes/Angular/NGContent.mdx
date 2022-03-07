@@ -1,0 +1,52 @@
+---
+title: What is Ng-Content in Angular?
+type: Notes
+desc: What is Ng-Content in Angular?
+ogImage: /data/notes/angular/angular.png
+topic: angular
+id: 7
+---
+
+`Ng-Content` uses the Content Projection to take html of anothe component and display it in itself. 
+
+##### When to Use `Ng-Content`?
+&rarr; When you want to inject HTML into a Component.
+
+To Demonstrate `Ng-Content`, We Need 2 Components.
+
+Template of First Content:
+
+![image](/data/notes/angular/NgContentTag.png)
+
+To Inject Content we Render this Component in a parent component.
+
+Parent's Template:
+
+![image](/data/notes/angular/ChildComponentRender.png)
+
+![image](/data/notes/angular/NGContentHelloWorldMessage.png)
+
+To Inject The Content:
+
+Parent's Template:
+
+![image](/data/notes/angular/ParentsTemplatePTag.png)
+
+Output in the Dom:
+![image](/data/notes/angular/HelloWorldFromParentNgContent.png)
+
+We can specify a css selector in each `Ng-Content` tag to render dynamic content at different Place.
+
+Example:
+
+Child's Template:
+
+![image](/data/notes/angular/NGContentCssSelector.png)
+
+Parent's Template:
+
+![image](/data/notes/angular/NGContentChildRender.png)
+
+Output in the Dom:
+
+![image](/data/notes/angular/NGContentCssSelectorOutput.png)
