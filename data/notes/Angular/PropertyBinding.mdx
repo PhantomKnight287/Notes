@@ -1,0 +1,33 @@
+---
+title: How to bind properties in Angular?
+type: Notes
+desc: How to bind Properties in Angular?
+ogImage: /data/notes/angular/angular.png
+topic: angular
+id: 9
+---
+
+Property binding moves a value in one direction. Value goes from Class's property to the target element. It helps us to set the value of the components and directives. 
+To use Property binding we use `[]` .
+
+For Example:
+
+```ts
+// snip
+	src:string= "../../favicon.ico"
+
+```
+
+```html
+<img [src]="src"/>
+```
+Output:
+![image](/data/notes/angular/AngularIconPropertyBinding.png)
+
+We can get the same result using Template Expressions.
+
+```html
+	<img src="{{src}}"/>
+```
+Ouput:
+![image](/data/notes/angular/AngularIconPropertyBinding.png)

@@ -1,0 +1,32 @@
+---
+title: Event Bindings
+type: Notes
+desc: How to Use Event Bindings in Angular?
+ogImage: /data/notes/angular/angular.png
+topic: angular
+id: 11
+---
+
+Event binding allows us to listen to events like button click,submission of forms etc.
+
+The syntax of event binding is event name in lowercase enclosed in `()` and an `=` pointing to a function name.
+
+Example:
+
+`App.component.html`
+
+```html
+<button (click)="showLog()">Show log</button>
+```
+
+`App.component.ts`
+
+```ts
+//snip
+
+showLog(){
+console.log("Hello World")
+}
+```
+
+This will show a button with `Show log` as text and will console log `Hello World` once clicked.

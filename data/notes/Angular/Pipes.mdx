@@ -1,0 +1,74 @@
+---
+title: What are Pipes in Angular?
+type: Notes
+desc: What are Pipes, How to Use them and How to create your own Pipe.?
+ogImage: /data/notes/angular/angular.png
+topic: angular
+id: 8
+---
+
+Pipes are just functions in your template which you can use to accept an input value and return a formatted value.
+
+Example:
+
+Creating a new variable in our component with name `date` and value set to `new Date()`.
+
+If we render it in our component this is what we get:
+
+![image](/data/notes/angular/Date.png)
+
+To get formatted date in our Component we can use `date` pipe.
+
+The syntax to use pipes is
+
+```html
+{{ <var> || <pipe-name> }}</pipe-name></var>
+```
+
+To use Date Pipe:
+
+```html
+{{ date | date }}
+```
+
+Here First `date` is the variable and second `date` is the date pipe.
+
+If we now see the output it will be this:
+
+![image](/data/notes/angular/DateFormatted.png)
+
+We can create our own pipes using `Angular Cli`
+To Create a new Pipe use:
+
+```bash
+	ng g p <name>
+```
+
+We will create a pipe called `greetings`
+
+Default code in the generated file:
+
+```ts
+import { Pipe, PipeTransform } from "@angular/core";
+
+@Pipe({
+  name: "greetings",
+})
+export class GreetingsPipe implements PipeTransform {
+  transform(value: unknown, ...args: unknown[]): unknown {
+    return null;
+  }
+}
+```
+
+Here `Pipe` and `PipeTransform` is already imported. The `name` property in `@Pipe` decorator is the name of the pipe which we can use in own template.
+
+In Our Pipe's Class `PipeTransform` is already implemented, this needs our class to have a `transform` function which will recieve a value passed from the component.
+
+In our case it will be a string so we can change the type from `unknown` to `string` for parameter `value` and function's return type.
+
+We will return the string `Hello <name>`.
+
+![image](/data/notes/angular/customPipeUsage.png)
+
+![image](/data/notes/angular/customPipeOutput.png)

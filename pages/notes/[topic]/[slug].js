@@ -1,6 +1,5 @@
 import { allNotes } from ".contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import Comments from "../../../layout/Comments";
 import Image from "next/image";
 import Head from "next/head";
 
@@ -29,8 +28,7 @@ export default function PostComponent({ post }) {
           justifyContent: "center",
           gap: "2rem",
         }}
-      >
-      </div>
+      ></div>
     </div>
   );
 }

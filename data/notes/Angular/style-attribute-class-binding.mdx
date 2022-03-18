@@ -1,0 +1,74 @@
+---
+title: What is Style, Attribute and Class binding?
+type: Notes
+desc: ""
+ogImage: /data/notes/angular/angular.png
+topic: angular
+id: 10
+---
+
+Using these bindings we can accessing the layout,dynamically style the application and update classes on the fly.
+
+### Attribute Binding
+
+It helps us to set the value of attributes directly. It is recommened to set the property of an element using property binding whenever possible. However sometimes we don't have an element property to bind. The syntax resembles property binding but instead of an element property we write the name of the attribute prefixed by `attr.`
+
+![image](/data/notes/angular/attributebinding.png)
+
+### Class binding
+
+We can use class binding to add or remove classes from an element. It is prefixed by `class.`
+
+```html
+<div [class.blue]="blue">Blue Text</div>
+```
+
+This will apply `blue` class to the element whenver the value of `blue` is set to true in component's Ts file.
+
+It will remove the class when expression is set to false.
+
+To bind classes we can use class names separated by spaces
+
+```html
+<div [class]="'blue red'">Colored Text</div>
+```
+
+We can also use object as class.
+
+```html
+<div
+  [class]="{
+		blue:true,
+		green:false
+	}"
+></div>
+```
+
+This will only apply `blue` class as blue is set to true and green is set to false.
+
+### Style Bindings
+
+We can use Style bindings to add css styles dynamically. This is prefixed with `style.`
+
+```html
+<div [style.background-color]="expression here"></div>
+<div [style.backgroundColor]="expression here"></div>
+```
+
+Both of these will produce the same result.
+We can also add styles like this:
+
+```html
+<div [style]="'width:200px color:green'"></div>
+```
+
+Or
+
+```html
+<div
+  [style]="{
+		width:'200px',
+		color:'#ff00ff'
+	}"
+></div>
+```
